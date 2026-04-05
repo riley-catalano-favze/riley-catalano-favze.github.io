@@ -80,6 +80,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .nav-links a:hover{color:var(--ink);}
 .nav-cta{background:var(--blue)!important;color:#fff!important;padding:.45rem 1.1rem;border-radius:2px;}
 .nav-cta:hover{background:var(--ink)!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--ink);border-radius:2px;transition:all .3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-menu{display:none;position:fixed;top:57px;left:0;right:0;background:var(--white);border-bottom:1px solid var(--border);z-index:99;flex-direction:column;padding:.5rem 0;max-height:calc(100vh - 57px);overflow-y:auto;}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{font-family:'DM Mono',monospace;font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);text-decoration:none;padding:.85rem 2rem;border-bottom:1px solid var(--border);transition:background .15s,color .15s;}
+.mobile-menu a:hover{background:var(--card-bg);color:var(--ink);}
+.mobile-menu a:last-child{border-bottom:none;}
+.mobile-cta{background:var(--blue)!important;color:#fff!important;margin:1rem 2rem;border-radius:2px;text-align:center;border-bottom:none!important;}
 .sw{padding:6rem 3rem;max-width:1200px;margin:0 auto;}
 .slabel{font-family:'DM Mono',monospace;font-size:.66rem;text-transform:uppercase;letter-spacing:.22em;color:var(--muted);margin-bottom:.7rem;display:flex;align-items:center;gap:.8rem;}
 .slabel::before{content:'';display:block;width:1.8rem;height:1px;background:var(--blue);}
@@ -169,8 +180,66 @@ footer{background:var(--ink);padding:1.8rem 3rem;display:flex;justify-content:sp
 footer span{font-family:'DM Mono',monospace;font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.3);}
 .reveal{opacity:1;transform:none;transition:opacity .65s ease,transform .65s ease;}
 .reveal.vis{opacity:1;transform:none;}
-@media(max-width:900px){nav{padding:1.1rem 1.5rem;}.sw{padding:4rem 1.5rem;}#hero{padding:8rem 1.5rem 4rem;}.agrid{grid-template-columns:1fr;gap:2.2rem;}.eitem{grid-template-columns:1fr;gap:.4rem;}.rgrid{grid-template-columns:repeat(2,1fr);}.pgrid{grid-template-columns:1fr 1fr;}.skgrid{grid-template-columns:1fr 1fr;}.fi-grid{grid-template-columns:1fr 1fr;}#cta{padding:5rem 1.5rem;}footer{flex-direction:column;gap:.7rem;text-align:center;}}
-@media(max-width:600px){.nav-links{display:none;}.pgrid{grid-template-columns:1fr;}.skgrid{grid-template-columns:1fr;}.fi-grid{grid-template-columns:1fr;}.hstats{gap:1.5rem;flex-wrap:wrap;}}
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem;}
+  .sw{padding:3.5rem 1.5rem;}
+  #hero{padding:7rem 1.5rem 3.5rem;}
+  .agrid{grid-template-columns:1fr;gap:2rem;}
+  .eitem{grid-template-columns:1fr;gap:.5rem;}
+  .etools{gap:.35rem;}
+  .rgrid{grid-template-columns:repeat(2,1fr);}
+  .pgrid{grid-template-columns:1fr 1fr;}
+  .skgrid{grid-template-columns:1fr 1fr;}
+  .fi-grid{grid-template-columns:1fr 1fr;}
+  #cta{padding:4rem 1.5rem;}
+  footer{flex-direction:column;gap:.7rem;text-align:center;padding:1.5rem;}
+  .divider{margin:0 1.5rem;}
+  .hstats{gap:2rem;flex-wrap:wrap;}
+  .hero-stats{gap:1.5rem;}
+}
+@media(max-width:600px){
+  nav{padding:.9rem 1.2rem;}
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .sw{padding:3rem 1.2rem;}
+  #hero{padding:6.5rem 1.2rem 3rem;}
+  .hname{font-size:clamp(3.5rem,18vw,6rem);}
+  .hsub{font-size:.95rem;margin-top:1.5rem;}
+  .htags{gap:.4rem;margin-top:1.4rem;}
+  .htag{font-size:.6rem;padding:.28rem .7rem;}
+  .hstats{gap:1.2rem;flex-wrap:wrap;margin-top:2rem;}
+  .snum{font-size:2rem;}
+  .slbl2{font-size:.55rem;}
+  .stitle{font-size:clamp(2rem,9vw,3rem);margin-bottom:2rem;}
+  .agrid{grid-template-columns:1fr;gap:1.5rem;}
+  .aside-card{padding:1.2rem;}
+  .eitem{grid-template-columns:1fr;gap:.4rem;padding:1.8rem 0;}
+  .eco{font-size:1.2rem;}
+  .ebody li{font-size:.88rem;}
+  .rgrid{grid-template-columns:repeat(2,1fr);}
+  .rnum{font-size:2.2rem;}
+  .rlbl{font-size:.55rem;}
+  .pgrid{grid-template-columns:1fr;}
+  .pcard{padding:1.4rem;}
+  .fi-grid{grid-template-columns:1fr;}
+  .fi-card{padding:1.4rem;}
+  .fi-card-title{font-size:1.1rem;}
+  .fi-intro p{font-size:.92rem;}
+  .ctabs{border-radius:4px;}
+  .ctab{font-size:.58rem;padding:.55rem .8rem;letter-spacing:.07em;}
+  .clist{grid-template-columns:1fr;}
+  .ci{font-size:.82rem;}
+  .skgrid{grid-template-columns:1fr;}
+  .sk{font-size:.6rem;}
+  .cert-cta{font-size:.62rem;padding:.65rem 1.2rem;text-align:center;}
+  #cta{padding:3.5rem 1.2rem;}
+  .ctitle{font-size:clamp(2.5rem,11vw,4rem);}
+  .cbtn{font-size:.65rem;padding:.85rem 1.8rem;}
+  footer{padding:1.2rem;gap:.5rem;}
+  footer span{font-size:.55rem;}
+  .divider{margin:0 1.2rem;}
+  .results-grid{grid-template-columns:repeat(2,1fr);}
+}
 </style>
 </head>
 <body>
@@ -188,7 +257,19 @@ footer span{font-family:'DM Mono',monospace;font-size:.62rem;text-transform:uppe
     <li><a href="#skills">Skills</a></li>
     <li><a href="#cta" class="nav-cta">Hire Me</a></li>
   </ul>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#experience" onclick="closeMenu()">Experience</a>
+  <a href="#favze-insights" onclick="closeMenu()">Insights</a>
+  <a href="#portfolio" onclick="closeMenu()">Results</a>
+  <a href="#certifications" onclick="closeMenu()">Certifications</a>
+  <a href="#skills" onclick="closeMenu()">Skills</a>
+  <a href="#cta" onclick="closeMenu()" class="mobile-cta">Hire Me</a>
+</div>
 
 <section id="hero">
   <p class="heye">AI-Driven Digital Marketing Strategist and Growth Expert</p>
@@ -611,6 +692,16 @@ footer span{font-family:'DM Mono',monospace;font-size:.62rem;text-transform:uppe
 </footer>
 
 <script>
+function toggleMenu(){
+  const h=document.getElementById('hamburger');
+  const m=document.getElementById('mobile-menu');
+  h.classList.toggle('open');
+  m.classList.toggle('open');
+}
+function closeMenu(){
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('mobile-menu').classList.remove('open');
+}
 const cur=document.getElementById('cur'),ring=document.getElementById('ring');
 document.addEventListener('mousemove',e=>{
   cur.style.left=e.clientX+'px';
